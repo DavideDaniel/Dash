@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Bootstrap CSS -->
+  <title>Dash</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/weather-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <section id="wrapper">
+    <div class = "container">
+
+      <span id="username"><%= username %></span>
+      <span id="city"><%= city %></span>
+
+      <div class="weather">
+        <button id="show-forecast" class="btn" data-toggle="modal" data-target="#forecast">
+          <i class="fa fa-area-chart"></i>
+        </button>
+        <form action="/session" method="POST" id="logout">
+          <input type="hidden" name="_method" value="DELETE"> <!-- overriding the method in the form tag -->
+          <button class="btn">Logout</button>
+        </form>
+
+        <h1><i id="icon"></i></h1>
+        <h3><%= city %></h3>
+        <h4 id="summary"></h4>
+        <h4 id="temperature"></h4>
+      </div>
+
+      <div class="quote">
+        <h1 id="quote"></h1>
+        <button id="get-quote" class="btn">Inspire Me</button>
+      </div>
+
+      <form action="/<%= username %>/weather" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="text" name="city" placeholder="Change City:">
+        <button class="btn btn-default">Submit</button>
+      </form>
+
+      <div class="modal fade"  id="forecast">
+        <div class="modal-dialog">
+          <div class="container">
+            <h1 class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times-circle"></i></h1>
+            <h3>Forecast</h3>
+            <ul id="fiveday">
+            </ul>
+          </div>
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="js/norris.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
