@@ -19,16 +19,21 @@
       <span id="city"><%= city %></span>
 
       <div class="weather">
-        <button id="show-forecast" class="btn" data-toggle="modal" data-target="#forecast">
+      <h3 id="show-settings" class="icons">
+        <i class="fa fa-cog"></i>
+      </h3>
+
+        <h3 id="show-forecast" class="icons" data-toggle="modal" data-target="#forecast">
           <i class="fa fa-area-chart"></i>
-        </button>
+        </h3>
+
         <form action="/session" method="POST" id="logout">
           <input type="hidden" name="_method" value="DELETE"> <!-- overriding the method in the form tag -->
           <button class="btn">Logout</button>
         </form>
 
         <h1><i id="icon"></i></h1>
-        <h3><%= city %></h3>
+        <h3><span id="currentCity"><%= city %></span></h3>
         <h4 id="summary"></h4>
         <h4 id="temperature"></h4>
       </div>
@@ -38,11 +43,10 @@
         <button id="get-quote" class="btn">Inspire Me</button>
       </div>
 
-    <!--   <form action="/<%= username %>/weather" method="POST">
-      <input type="hidden" name="_method" value="PUT">
-      <input type="text" name="city" placeholder="Change City:">
-      <button class="btn btn-default">Submit</button>
-    </form> -->
+  <!--     <div class="form-group">
+    <input type="text" name="newCity" placeholder="Change City" id="changeCity" class="form-control">
+    <button id="submitChange" class="btn btn-default">Submit</button>
+  </div> -->
 
       <div class="modal fade"  id="forecast">
         <div class="modal-dialog">

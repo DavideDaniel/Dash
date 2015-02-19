@@ -16,8 +16,10 @@
 
       <nav>
         <form action="/session" method="POST" class="navbar-form navbar-right">
-          <input type="text" name="username" class="form-control" placeholder="Name:">
-          <input type="password" name="password" class="form-control" placeholder="Password:">
+          <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="Name">
+          </div>
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <button class="btn">Log In</button>
         </form>
       </nav>
@@ -37,7 +39,7 @@
                 <h2> Create Account: </h2>
                 <div class="form-group">
                   <label for="name">Name:</label>
-                  <input type="text" name="username" id="name" class="form-control">
+                  <input type="text" name="username" id="name" class="form-control" autofocus>
                 </div>
                 <div class="form-group">
                   <label for="password">Password:</label>

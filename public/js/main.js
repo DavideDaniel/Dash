@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 var wrapper = document.getElementById("wrapper");
 var username = document.getElementById("username");
 var name = username.innerHTML;
+var currentCity = document.getElementById("currentCity");
 var weatherUrl = "/" + name + "/weather";
 
 getWeather(weatherUrl);
@@ -17,8 +18,6 @@ var getQuote = document.getElementById("get-quote");
 getQuote.addEventListener("click", function(){
   newQuote(name);
 });
-
-
 
 
 function getWeather(url){
@@ -150,6 +149,24 @@ function getWeather(url){
   });
   xhr.send();
 };
+
+var submitChange = document.getElementById("submitChange");
+submitChange.addEventListener("click", function(name){
+  var changeCity = document.getElementById("changeCity");
+  var newCity = changeCity.value;
+  currentCity.innerHTML = newCity;
+  console.log(newCity);
+  var url = "/" + name + "/weather/" + newCity;
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.addEventListener('load', function(e) {
+    var newWeather = url;
+    getWeather(newWeather);
+  });
+  xhr.send();
+});
+
+
 
 function newQuote(name){
   var url = "http://api.icndb.com/jokes/random?firstName=" + name + "&lastName=";
