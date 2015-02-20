@@ -32,7 +32,6 @@ app.get('/', function(req, res){
 });
 
 app.post('/user', function(req, res){
-
   var username = req.body.username;
   var password = req.body.password;
   var confirmPassword = req.body.confirmPassword;

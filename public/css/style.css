@@ -119,6 +119,7 @@ body {
   width: 100%;
   height: 300px;
   padding: 20px;
+  padding-top: 100px;
 }
 
 .day {
@@ -144,13 +145,8 @@ body {
 }
 
 #get-quote {
+  margin-top: 12px;
   font-weight: 500;
-}
-
-#logout {
-  position: absolute;
-  bottom: 40px;
-  right: 10%;
 }
 
 /* Gradient Animations */
@@ -163,6 +159,61 @@ body {
   overflow: scroll;
   padding: 20px;
   padding-bottom: 60px;
+}
+
+.dropdown-menu {
+  margin-top: 48px;
+  width: 240px;
+  background: rgba(255,255,255,0.5);
+  padding: 20px;
+  color: #fff;
+}
+
+.dropdown-menu input {
+  color: #333;
+  margin-bottom: 12px
+}
+
+/* #logout button {
+  background: #333;
+  border: none;
+}
+ */
+#changeForm {
+  position: relative;
+  height: 40px;
+  margin-bottom: 24px;
+  padding: 12px;
+}
+
+#changeCity {
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#submitChange {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.25em;
+  color: #ccc;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#submitChange:hover {
+  color: #333;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 #changeCity {

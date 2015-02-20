@@ -19,18 +19,24 @@
       <span id="city"><%= city %></span>
 
       <div class="weather">
-      <h3 id="show-settings" class="icons">
-        <i class="fa fa-cog"></i>
-      </h3>
-
-        <h3 id="show-forecast" class="icons" data-toggle="modal" data-target="#forecast">
-          <i class="fa fa-area-chart"></i>
+      <div class="dropdown">
+        <h3 id="show-settings" class="icons ropdown-toggle" type="button" id="settings-dropdown" data-toggle="dropdown" aria-expanded="true">
+          <i class="fa fa-cog" data-toggle="tooltip" data-placement="top" title="Settings"></i>
         </h3>
-
-        <form action="/session" method="POST" id="logout">
-          <input type="hidden" name="_method" value="DELETE"> <!-- overriding the method in the form tag -->
-          <button class="btn">Logout</button>
-        </form>
+        <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="settings-dropdown">
+          <div class="form-group" id="changeForm">
+            <input type="text" name="newCity" placeholder="Change City" id="changeCity" class="form-control" autofocus>
+            <i class="fa fa-map-marker" id="submitChange"></i>
+          </div>
+          <form action="/session" method="POST" id="logout">
+            <input type="hidden" name="_method" value="DELETE"> <!-- overriding the method in the form tag -->
+            <button class="btn">Logout</button>
+          </form>
+        </div>
+      </div>
+        <h3 id="show-forecast" class="icons" data-toggle="modal" data-target="#forecast">
+          <i class="fa fa-area-chart" data-toggle="tooltip" data-placement="top" title="Forecast"></i>
+        </h3>
 
         <h1><i id="icon"></i></h1>
         <h3><span id="currentCity"><%= city %></span></h3>
@@ -43,16 +49,10 @@
         <button id="get-quote" class="btn">Inspire Me</button>
       </div>
 
-  <!--     <div class="form-group">
-    <input type="text" name="newCity" placeholder="Change City" id="changeCity" class="form-control">
-    <button id="submitChange" class="btn btn-default">Submit</button>
-  </div> -->
-
       <div class="modal fade"  id="forecast">
         <div class="modal-dialog">
           <div class="container">
             <h1 class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times-circle"></i></h1>
-            <h3>Forecast</h3>
             <ul id="fiveday">
             </ul>
           </div>

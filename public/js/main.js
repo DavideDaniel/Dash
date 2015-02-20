@@ -150,23 +150,43 @@ function getWeather(url){
   xhr.send();
 };
 
+var changeCity = document.getElementById("changeCity");
+
+changeCity.addEventListener("keydown", function(){
+  if(event.keyCode == 13) {
+    var newCity = changeCity.value;
+    if (newCity != "") {
+      currentCity.innerHTML = newCity;
+      console.log(newCity);
+      var url = "/" + name + "/weather/" + newCity;
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url);
+      xhr.addEventListener('load', function(e) {
+        var newWeather = url;
+        getWeather(newWeather);
+      });
+      xhr.send();
+    }
+  }
+})
+
 var submitChange = document.getElementById("submitChange");
+
 submitChange.addEventListener("click", function(name){
-  var changeCity = document.getElementById("changeCity");
   var newCity = changeCity.value;
-  currentCity.innerHTML = newCity;
-  console.log(newCity);
-  var url = "/" + name + "/weather/" + newCity;
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
-  xhr.addEventListener('load', function(e) {
-    var newWeather = url;
-    getWeather(newWeather);
-  });
-  xhr.send();
+  if (newCity != "") {
+    currentCity.innerHTML = newCity;
+    console.log(newCity);
+    var url = "/" + name + "/weather/" + newCity;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.addEventListener('load', function(e) {
+      var newWeather = url;
+      getWeather(newWeather);
+    });
+    xhr.send();
+  }
 });
-
-
 
 function newQuote(name){
   var url = "http://api.icndb.com/jokes/random?firstName=" + name + "&lastName=";
@@ -180,5 +200,13 @@ function newQuote(name){
   });
   xhr.send();
 };
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
+
+$('.dropdown-menu').click(function(e) {
+  e.stopPropagation();
+});
 
 });
