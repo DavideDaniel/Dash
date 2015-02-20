@@ -9,13 +9,9 @@ var db = new sqlite3.Database("users.db");
 var app = express();
 var secret = require('./secret.json');
 
-var googKey = fs.readFileSync("googkey.txt", "utf8");
-console.log(googKey);
-var forecastKey = fs.readFileSync("forecastkey.txt", "utf8");
-console.log(forecastKey);
-//
-// var googKey = process.env.GOOG_KEY;
-// var forecastKey = process.env.FORECAST_KEY;
+
+var googKey = secret["key1"];
+var forecastKey = secret["key2"];
 
 app.use(session({
   secret: "penguin",
@@ -98,6 +94,7 @@ app.get("/:username/weather", function(req, res){
       var city = row.city;
       //geocode call
       var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=" + googKey;
+      console.log(googKey);
       request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           data = JSON.parse(body);
@@ -106,6 +103,7 @@ app.get("/:username/weather", function(req, res){
         }
         //weather call
         var url2 = "https://api.forecast.io/forecast/" + forecastKey + "/" + lat + "," + long;
+        console.log(url2);
         request(url2, function (error, response, body) {
           if (!error && response.statusCode == 200) {
             data = JSON.parse(body);
