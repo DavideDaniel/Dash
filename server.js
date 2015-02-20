@@ -9,13 +9,13 @@ var db = new sqlite3.Database("users.db");
 var app = express();
 var secret = require('./secret.json');
 
-// var googKey = fs.readFileSync("googkey.txt", "utf8");
-// console.log(googKey);
-// var forecastKey = fs.readFileSync("forecastkey.txt", "utf8");
-// console.log(forecastKey);
-
-var googKey = process.env.GOOG_KEY;
-var forecastKey = process.env.FORECAST_KEY;
+var googKey = fs.readFileSync("googkey.txt", "utf8");
+console.log(googKey);
+var forecastKey = fs.readFileSync("forecastkey.txt", "utf8");
+console.log(forecastKey);
+//
+// var googKey = process.env.GOOG_KEY;
+// var forecastKey = process.env.FORECAST_KEY;
 
 app.use(session({
   secret: "penguin",
