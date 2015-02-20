@@ -94,7 +94,6 @@ app.get("/:username/weather", function(req, res){
       var city = row.city;
       //geocode call
       var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=" + googKey;
-      console.log(googKey);
       request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           data = JSON.parse(body);
@@ -103,7 +102,6 @@ app.get("/:username/weather", function(req, res){
         }
         //weather call
         var url2 = "https://api.forecast.io/forecast/" + forecastKey + "/" + lat + "," + long;
-        console.log(url2);
         request(url2, function (error, response, body) {
           if (!error && response.statusCode == 200) {
             data = JSON.parse(body);
